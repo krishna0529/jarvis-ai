@@ -8,6 +8,7 @@ from automation.browser.download import DownloadManager
 from automation.browser.upload import UploadManager
 from automation.browser.cookies import CookieManager
 from automation.browser.storage import StorageStateManager
+from automation.browser.wait import WaitManager
 
 
 
@@ -41,6 +42,9 @@ class BrowserManager:
         
 
         self.pdf = PDFManager(
+            self.session.page
+        )
+        self.wait = WaitManager(
             self.session.page
         )
 
