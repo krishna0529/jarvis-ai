@@ -1,6 +1,16 @@
 import sys
-# pyrefly: ignore [missing-import]
-from PySide6.QtWidgets import QApplication
+import subprocess
+
+# Auto-check PySide6 import
+try:
+    # pyrefly: ignore [missing-import]
+    from PySide6.QtWidgets import QApplication
+except ImportError:
+    print("[JARVIS] PySide6 module missing. Installing PySide6...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "PySide6"])
+    # pyrefly: ignore [missing-import]
+    from PySide6.QtWidgets import QApplication
+
 from gui.main_window import MainWindow
 from voice.tts import tts_engine
 from integrations.databases.sqlite import db
