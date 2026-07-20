@@ -1,3 +1,4 @@
+from automation.browser.smart_locator import SmartLocator
 from automation.browser.browser import BrowserEngine
 from automation.browser.page import PageManager
 from automation.browser.locator import LocatorManager
@@ -39,8 +40,9 @@ class BrowserManager:
         self.screenshot = ScreenshotManager(
             self.session.page
         )
-        
-
+        self.smart = SmartLocator(
+            self.session.page
+        )
         self.pdf = PDFManager(
             self.session.page
         )
