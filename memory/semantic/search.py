@@ -1,5 +1,7 @@
+# pyrefly: ignore [missing-import]
 from memory.semantic.embeddings import model
 
+# pyrefly: ignore [missing-import]
 from memory.semantic.vector_store import collection
 
 
