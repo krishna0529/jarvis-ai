@@ -6,35 +6,11 @@ from automation.browser.screenshot import ScreenshotManager
 from automation.browser.pdf import PDFManager
 from automation.browser.download import DownloadManager
 from automation.browser.upload import UploadManager
+from automation.browser.cookies import CookieManager
+from automation.browser.storage import StorageStateManager
 
 
-class BrowserManager:
 
-    def start(self):
-
-        self.session = self.engine.start()
-
-        self.page = PageManager(self.session.page)
-
-        self.locator = LocatorManager(self.session.page)
-
-        self.actions = ActionManager(self.session.page)
-
-        self.screenshot = ScreenshotManager(
-            self.session.page
-        )
-
-        self.pdf = PDFManager(
-            self.session.page
-        )
-
-        self.download = DownloadManager(
-            self.session.page
-        )
-
-        self.upload = UploadManager(
-            self.session.page
-        )
 
 
 class BrowserManager:
@@ -49,16 +25,50 @@ class BrowserManager:
 
         self.locator = None
 
-    def start(self):
+    def start(self, profile="default"):
 
-        self.session = self.engine.start()
+        self.session = self.engine.start(profile)
+        # self.session = self.engine.start()
+        self.page = PageManager(self.session.page)
 
+        self.locator = LocatorManager(self.session.page)
+
+        self.actions = ActionManager(self.session.page)
+
+        self.screenshot = ScreenshotManager(
+            self.session.page
+        )
+        
+
+        self.pdf = PDFManager(
+            self.session.page
+        )
+
+        self.download = DownloadManager(
+            self.session.page
+        )
+
+        self.upload = UploadManager(
+            self.session.page
+        )
         self.page = PageManager(
             self.session.page
         )
 
         self.locator = LocatorManager(
             self.session.page
+        )
+
+        self.actions = ActionManager(
+            self.session.page
+        )
+
+        self.storage = StorageStateManager(
+            self.session.context
+        )
+
+        self.cookies = CookieManager(
+            self.session.context
         )
 
     def stop(self):
