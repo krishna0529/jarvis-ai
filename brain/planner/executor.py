@@ -1,27 +1,7 @@
-from tools.manager import ToolManager
-
 class TaskExecutor:
 
-    def __init__(self):
+    def execute(self, plan):
 
-        self.tools = ToolManager()
+        for task in plan.tasks:
 
-    def execute(self, workflow):
-
-        results = []
-
-        for task in workflow.tasks:
-
-            result = self.tools.execute(
-
-                task.action,
-
-                task.entities
-
-            )
-
-            task.status = "DONE"
-
-            results.append(result)
-
-        return results
+            print(task.action)

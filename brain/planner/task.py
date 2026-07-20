@@ -1,12 +1,21 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 @dataclass
 class Task:
 
-    id: int
+    name: str
+
+    tool: str
 
     action: str
 
-    entities: dict
+    parameters: dict = field(default_factory=dict)
 
-    status: str = "PENDING"
+    retry: int = 2
+
+@dataclass
+class ExecutionPlan:
+
+    goal: str
+
+    tasks: list = field(default_factory=list)

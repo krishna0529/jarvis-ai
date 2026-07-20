@@ -1,26 +1,26 @@
-from brain.planner.task import Task
-from brain.planner.workflow import Workflow
+from brain.planner.task import Task, ExecutionPlan
 
 class TaskPlanner:
 
-    def create_plan(self, intent):
-
+    def create_plan(self, goal: str, parsed_commands: list) -> ExecutionPlan:
         tasks = []
-
-        if intent.intent == "OPEN_APPLICATION":
-
-            tasks.append(
-
-                Task(
-
-                    id=1,
-
-                    action="OPEN_APPLICATION",
-
-                    entities=intent.entities
-
-                )
-
-            )
-
-        return Workflow(tasks)
+        for cmd in parsed_commands:
+            action = cmd.get("action")
+            target = cmd.get("target")
+            
+            if action == "open" and target == "github":
+                tasks.append(Task(
+                    name="Open GitHub",
+                    tool="browser",
+                    action="open",
+                    parameters={"url": "https://github.com"}
+                ))
+            elif action == "search":
+                tasks.append(Task(
+                    name=f"Search {target}",
+                    tool="browser",
+                    action="search",
+                    parameters={"query": target}
+                ))
+                
+        return ExecutionPlan(goal=goal, tasks=tasks)
