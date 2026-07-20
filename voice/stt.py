@@ -6,6 +6,7 @@ class SpeechToTextEngine:
     def __init__(self):
         self.sr_available = False
         try:
+            # pyrefly: ignore [missing-import]
             import speech_recognition as sr
             self.recognizer = sr.Recognizer()
             self.sr_available = True
@@ -18,6 +19,7 @@ class SpeechToTextEngine:
             return ""
 
         if self.sr_available:
+            # pyrefly: ignore [missing-import]
             import speech_recognition as sr
             try:
                 with sr.AudioFile(audio_file_path) as source:
@@ -34,6 +36,7 @@ class SpeechToTextEngine:
     def listen_live(self, timeout=5) -> str:
         """Listen live from default microphone."""
         if self.sr_available:
+            # pyrefly: ignore [missing-import]
             import speech_recognition as sr
             try:
                 with sr.Microphone() as source:

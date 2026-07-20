@@ -32,7 +32,7 @@ class TextToSpeechEngine:
 
     def speak(self, text: str, async_mode: bool = True):
         """Speak out text cleanly."""
-        print(f"🤖 JARVIS Voice Output: {text}")
+        print(f"[JARVIS Voice Output]: {text}")
 
         if async_mode:
             threading.Thread(target=self._speak_internal, args=(text,), daemon=True).start()
