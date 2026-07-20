@@ -4,6 +4,9 @@ from automation.browser.locator import LocatorManager
 from automation.browser.actions import ActionManager
 from automation.browser.screenshot import ScreenshotManager
 from automation.browser.pdf import PDFManager
+from automation.browser.download import DownloadManager
+from automation.browser.upload import UploadManager
+
 
 class BrowserManager:
 
@@ -22,6 +25,14 @@ class BrowserManager:
         )
 
         self.pdf = PDFManager(
+            self.session.page
+        )
+
+        self.download = DownloadManager(
+            self.session.page
+        )
+
+        self.upload = UploadManager(
             self.session.page
         )
 
