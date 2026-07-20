@@ -1,14 +1,16 @@
-from memory.short_term.context import ContextMemory
-from memory.long_term.repository import MemoryRepository
-from memory.semantic.search import SemanticSearch
-
+from memory.short_term import ShortTermMemory
+from memory.long_term import LongTermMemory
+from memory.semantic import SemanticMemory
+from memory.episodic import EpisodicMemory
 
 class MemoryManager:
 
     def __init__(self):
 
-        self.context = ContextMemory()
+        self.short = ShortTermMemory()
 
-        self.repository = MemoryRepository()
+        self.long = LongTermMemory()
 
-        self.semantic = SemanticSearch()
+        self.semantic = SemanticMemory()
+
+        self.episodic = EpisodicMemory()
