@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite3
+
+# Environment Variables
+.env
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# PyInstaller
+*.spec
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+
+# ChromaDB
+memory/vector_db/
+
+# Model Cache
+.cache/

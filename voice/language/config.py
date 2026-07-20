@@ -1,0 +1,10 @@
+SUPPORTED_LANGUAGES = [
+    "en",
+    "hi"
+]
+
+DEFAULT_LANGUAGE = "en"
+
+ENABLE_AUTO_DETECTION = True
+
+ENABLE_TRANSLATION = False
